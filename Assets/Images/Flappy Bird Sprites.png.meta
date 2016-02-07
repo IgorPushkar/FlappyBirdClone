@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 98d2f214833a0aa4291081700b7425f7
-timeCreated: 1454867950
+timeCreated: 1454872535
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -593,18 +593,18 @@ TextureImporter:
     - name: Ground
       rect:
         serializedVersion: 2
-        x: 22
-        y: 213
-        width: 721
-        height: 240
+        x: 24
+        y: 216
+        width: 718
+        height: 235
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -336.464, y: 113.32588}
-        - {x: -336.464, y: -111.67412}
-        - {x: 337.536, y: -111.67412}
-        - {x: 337.536, y: 113.32588}
+      - - {x: -335.09708, y: 110.62625}
+        - {x: -335.09708, y: -109.37375}
+        - {x: 335.90292, y: -109.37375}
+        - {x: 335.90292, y: 110.62625}
     - name: Blank Game Button
       rect:
         serializedVersion: 2
