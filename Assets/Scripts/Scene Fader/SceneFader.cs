@@ -14,6 +14,7 @@ public class SceneFader : MonoBehaviour {
 
 	void Awake(){
 		MakeSingleton ();
+		anim.updateMode = AnimatorUpdateMode.UnscaledTime;
 	}
 
 	void MakeSingleton(){
@@ -36,14 +37,14 @@ public class SceneFader : MonoBehaviour {
 	IEnumerator FadeInAnimation(string level){
 		fadeCanvas.SetActive (true);
 		anim.Play("FadeIn");
-		yield return new WaitForSeconds (0.7f);
+		yield return StartCoroutine(MyCoroutine.WaitForRealSeconds (0.7f));
 		SceneManager.LoadScene (level);
 		FadeOut ();
 	}
 
 	IEnumerator FadeOutAnimation(){
 		anim.Play ("FadeOut");
-		yield return new WaitForSeconds (1f);
+		yield return StartCoroutine(MyCoroutine.WaitForRealSeconds (1f));
 		fadeCanvas.SetActive (false);
 	}
 }

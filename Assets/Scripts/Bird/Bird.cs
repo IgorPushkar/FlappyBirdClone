@@ -59,7 +59,7 @@ public class Bird : MonoBehaviour {
 	}
 
 	void SetCameraX(){
-		CameraScript.offsetX = (Camera.main.transform.position.x - transform.position.x) -1f;
+		CameraScript.offsetX = (Camera.main.transform.position.x - transform.position.x);
 	}
 
 	public float GetPositionX(){
@@ -76,14 +76,16 @@ public class Bird : MonoBehaviour {
 				isAlive = false;
 				anim.SetTrigger ("Died");
 				audioSource.PlayOneShot (diedClip);
+				GameplayController.instance.PlayerDied (score);
 			}
 		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
 		if(other.gameObject.tag == "PipeHolder"){
-			audioSource.PlayOneShot (pointClip);
 			score++;
+			GameplayController.instance.SetScore (score);
+			audioSource.PlayOneShot (pointClip);
 		}
 	}
 }

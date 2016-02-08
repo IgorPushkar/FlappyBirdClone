@@ -19,6 +19,18 @@ public class MenuController : MonoBehaviour {
 		CheckIfBirdsUnlocked ();
 	}
 
+	void Update(){
+		if(Input.GetKeyDown(KeyCode.Escape)){
+			Application.Quit ();
+		}
+	}
+
+	void MakeInstance(){
+		if(instance == null){
+			instance = this;
+		}
+	}
+
 	void CheckIfBirdsUnlocked(){
 		isGreenBirdUnlocked = GameController.instance.IsGreenBirdUnlocked ();
 		isRedBirdUnlocked = GameController.instance.IsRedBirdUnlocked ();
@@ -49,12 +61,6 @@ public class MenuController : MonoBehaviour {
 			birds [2].SetActive (false);
 			GameController.instance.SetSelectedBird (0);
 			birds [GameController.instance.GetSelectedBird ()].SetActive (true);
-		}
-	}
-
-	void MakeInstance(){
-		if(instance == null){
-			instance = this;
 		}
 	}
 }

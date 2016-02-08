@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour {
 		MakeSingleton ();
 //		PlayerPrefs.DeleteAll ();
 		InitializeValues ();
+		Screen.sleepTimeout = 0;
 	}
 
 	void MakeSingleton(){
