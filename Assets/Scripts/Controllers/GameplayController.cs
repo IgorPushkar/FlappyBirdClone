@@ -24,6 +24,20 @@ public class GameplayController : MonoBehaviour {
 		Time.timeScale = 0.0f;
 	}
 
+	void Update(){
+		if(Input.GetKeyDown(KeyCode.Escape)){
+			if(Bird.instance != null && Bird.instance.isAlive){
+				if(pausePanel.activeInHierarchy){
+					ResumeGame ();
+				} else {
+					PauseGame ();
+				}
+			} else {
+				GoToMenu ();
+			}
+		}
+	}
+
 	void MakeInstance(){
 		if(instance == null){
 			instance = this;

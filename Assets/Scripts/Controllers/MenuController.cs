@@ -21,7 +21,7 @@ public class MenuController : MonoBehaviour {
 
 	void Update(){
 		if(Input.GetKeyDown(KeyCode.Escape)){
-			Application.Quit ();
+			Quit ();
 		}
 	}
 
@@ -38,6 +38,14 @@ public class MenuController : MonoBehaviour {
 
 	public void PlayGame(){
 		SceneFader.instance.FadeIn ("Gameplay");
+	}
+
+	public void ConnectOnGooglePlayGames(){
+		LeaderboardController.instance.ConnectOrDisconnectOnGooglePlayGames ();
+	}
+
+	public void OpenLeaderboardScoreUI(){
+		LeaderboardController.instance.OpenLeaderboardsScore ();
 	}
 
 	public void ChangeBird(){
@@ -62,5 +70,9 @@ public class MenuController : MonoBehaviour {
 			GameController.instance.SetSelectedBird (0);
 			birds [GameController.instance.GetSelectedBird ()].SetActive (true);
 		}
+	}
+
+	public void Quit(){
+		Application.Quit ();
 	}
 }
