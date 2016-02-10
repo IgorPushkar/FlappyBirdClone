@@ -77,6 +77,7 @@ public class Bird : MonoBehaviour {
 				anim.SetTrigger ("Died");
 				audioSource.PlayOneShot (diedClip);
 				GameplayController.instance.PlayerDied (score);
+				AdsController.instance.ShowInterstitial ();
 			}
 		}
 	}

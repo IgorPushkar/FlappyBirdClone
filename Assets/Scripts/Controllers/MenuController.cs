@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class MenuController : MonoBehaviour {
@@ -9,6 +10,12 @@ public class MenuController : MonoBehaviour {
 	private GameObject[] birds;
 
 	private bool isGreenBirdUnlocked, isRedBirdUnlocked;
+
+	[SerializeField]
+	private Animator notificationAnimator;
+
+	[SerializeField]
+	private Text notificationText;
 
 	void Awake(){
 		MakeInstance ();
@@ -48,6 +55,14 @@ public class MenuController : MonoBehaviour {
 		LeaderboardController.instance.OpenLeaderboardsScore ();
 	}
 
+	public void ConnectOnTwitter(){
+		SoomlaMediaController.instance.LoginLogoutTwitter ();
+	}
+
+	public void ShareOnTwitter(){
+		SoomlaMediaController.instance.ShareOnTwitter ();
+	}
+
 	public void ChangeBird(){
 		if (GameController.instance.GetSelectedBird () == 0) {
 			if (isGreenBirdUnlocked) {
@@ -74,5 +89,16 @@ public class MenuController : MonoBehaviour {
 
 	public void Quit(){
 		Application.Quit ();
+	}
+
+	public void NotificationMessage(string message){
+		StartCoroutine ("AnimateNotificationPanel", message);
+	}
+
+	IEnumerator AnimateNotificationPanel(string message){
+		notificationText.text = message;
+		notificationAnimator.Play ("SlideIn");
+		yield return StartCoroutine (MyCoroutine.WaitForRealSeconds (2f));
+		notificationAnimator.Play ("SlideOut");
 	}
 }
